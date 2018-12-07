@@ -1,0 +1,18 @@
+FROM alpine:3.8
+
+WORKDIR /usr/src/app/
+
+COPY package*.json ./
+
+RUN apk add --no-cache nodejs-current nodejs-current-npm tini \
+    && npm install
+   
+COPY . .
+
+RUN npm run build
+
+EXPOSE 3000
+
+ENTRYPOINT ["/sbin/tini", "--"]
+
+CMD ["npm", "run", "start"]
