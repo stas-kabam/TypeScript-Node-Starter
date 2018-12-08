@@ -2,11 +2,11 @@ version: '3.7'
 services:
   app:
     container_name: app
-    image: node-app-nostage
+    image: gcr.io/sparx-sandbox/node-demo
     restart: always
     environment:
       - NODE_ENV=development
-      - MONGODB_URI_LOCAL=mongodb://mongo:27017
+      - MONGODB_URI_LOCAL=mongodb://mongo:37018
       - SESSION_SECRET=${SESSION_SECRET}
       - FACEBOOK_ID=${FACEBOOK_ID}
       - FACEBOOK_SECRET=${FACEBOOK_SECRET}
@@ -17,9 +17,10 @@ services:
   mongo:
     container_name: mongo
     image: mongo
+    command: mongod --port 37018
     volumes:
       - mongo-data:/data/db
     ports:
-      - "27017:27017"
+      - "37018:37018"
 volumes:
   mongo-data:
