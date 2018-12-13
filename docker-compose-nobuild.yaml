@@ -2,7 +2,7 @@ version: '3.7'
 services:
   app:
     container_name: app
-    image: gcr.io/sparx-sandbox/node-demo
+    image: ${APP_IMAGE}
     restart: always
     environment:
       - NODE_ENV=development
