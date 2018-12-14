@@ -2,7 +2,7 @@ version: '3.7'
 services:
   app:
     container_name: app
-    image: ${APP_IMAGE}
+    image: sbobylev/typescript-node-starter_app
     restart: always
     environment:
       - NODE_ENV=development
