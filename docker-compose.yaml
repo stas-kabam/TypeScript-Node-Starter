@@ -3,6 +3,7 @@ services:
   app:
     container_name: app
     restart: always
+    command: npm run serve-debug
     build: .
     environment:
       - NODE_ENV=development
@@ -12,6 +13,7 @@ services:
       - FACEBOOK_SECRET=${FACEBOOK_SECRET}
     ports:
       - "3000:3000"
+      - "9229:9229"
     depends_on:
       - "mongo-db"
   mongo-db:
